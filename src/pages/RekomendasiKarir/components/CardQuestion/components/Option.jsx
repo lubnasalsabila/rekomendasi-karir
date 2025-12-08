@@ -56,7 +56,7 @@ export function Option({
             className={cn(
               "h-12 w-12 sm:w-15 sm:h-15 text-xs sm:text-lg rounded-full flex items-center justify-center font-semibold border transition-all",
               selected
-                ? "bg-[#36B54A] text-white border-green-700 scale-[1.03]"
+                ? "bg-[#206FB7] text-white border-blue-700 scale-[1.03]"
                 : "bg-muted text-foreground/70 hover:bg-muted/80"
             )}
           >

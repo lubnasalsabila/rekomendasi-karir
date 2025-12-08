@@ -3,6 +3,12 @@ import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress"
 import { Option } from "./components/CardQuestion/components/Option";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+// import { CardSection } from "./components/CardSection";
 
 const RekomendasiKarir = () => {
 
@@ -48,7 +54,7 @@ const RekomendasiKarir = () => {
 
                 <Progress 
                     value={(page / totalPages) * 100} 
-                    className="[&>div]:bg-[#36B54A]"
+                    className="[&>div]:bg-[#206FB7]"
                 />
 
                 <h1 className="text-sm md:text-2xl sm:text-xl">
@@ -58,6 +64,12 @@ const RekomendasiKarir = () => {
                 <Option variant="vertical" className="max-w-[300px] mx-auto sm:max-w-full"/>
 
                 <div className="flex flex-col items-center gap-2">
+                    
+                    <Card className="w-full max-w-xl bg-[#206FB7] p-4 ">
+                        <CardHeader className="items-center gap-0">
+                            <CardTitle className="text-sm sm:text-lg text-white font-bold ">Section 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit</CardTitle>
+                        </CardHeader>
+                    </Card>
                     
                     {currentQuestions.map((ans, i) => (
                         <CardQuestion
@@ -71,7 +83,7 @@ const RekomendasiKarir = () => {
                         disabled={!allFilled}
                         className={`
                             w-full mt-6 text-white max-w-lg sm:max-w-xl
-                            ${allFilled ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"}
+                            ${allFilled ? "bg-[#206FB7] hover:bg-blue-500" : "bg-gray-400"}
                         `}
                         onClick={() => {
                             if (!isLastPage) {
