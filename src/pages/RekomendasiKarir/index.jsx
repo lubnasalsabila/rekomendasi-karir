@@ -34,14 +34,14 @@ const RekomendasiKarir = () => {
     }, [page]);
 
     return (
-        <div className="text-center flex flex-col items-center py-6 sm:py-8">
-            <div className="w-full max-w-sm md:max-w-2xl sm:max-w-xl flex flex-col gap-3 md:gap-6">
+        <div className="text-center flex flex-col items-center sm:py-8">
+            <div className="w-full max-w-sm p-4 md:max-w-2xl sm:max-w-xl flex flex-col gap-3 md:gap-6">
 
                 <div className="flex justify-between mb-1">
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs sm:text-sm">
                         {answeredCount}/{TOTAL} Question
                     </p>
-                    <p className="text-[#206FB7] font-semibold text-sm">
+                    <p className="text-[#206FB7] font-semibold text-xs sm:text-sm">
                         Page {page} of {totalPages}
                     </p>
                 </div>
@@ -51,11 +51,11 @@ const RekomendasiKarir = () => {
                     className="[&>div]:bg-[#36B54A]"
                 />
 
-                <h1 className="text-lg md:text-2xl sm:text-xl">
+                <h1 className="text-sm md:text-2xl sm:text-xl">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </h1>
 
-                <Option variant="vertical"/>
+                <Option variant="vertical" className="max-w-[300px] mx-auto sm:max-w-full"/>
 
                 <div className="flex flex-col items-center gap-2">
                     
@@ -70,7 +70,7 @@ const RekomendasiKarir = () => {
                     <Button
                         disabled={!allFilled}
                         className={`
-                            w-full mt-6 text-white max-w-xl sm:max-w-lg
+                            w-full mt-6 text-white max-w-lg sm:max-w-xl
                             ${allFilled ? "bg-green-600 hover:bg-green-700" : "bg-gray-400"}
                         `}
                         onClick={() => {

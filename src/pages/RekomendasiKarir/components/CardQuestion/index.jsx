@@ -13,7 +13,7 @@ const CardQuestion = ({ value, onSelect }) => {
             <Card className="w-full max-w-sm sm:max-w-lg md:max-w-xl text-center sm:px-8 md:px-6 md:gap-4 gap-3 shadow-none border-none">
                 <CardHeader className="px-0">
                     <CardTitle className="text-lg sm:text-xl text-[#206FB7]">Question </CardTitle>
-                    <CardDescription className="text-base text-black">
+                    <CardDescription className="text-xs sm:text-base text-black px-4">
                     Ut enim ad minima veniam, quis nostrum nisi ut aliquid ex ea commodi consequatur?
                     </CardDescription>
                 </CardHeader>
@@ -26,9 +26,9 @@ const CardQuestion = ({ value, onSelect }) => {
                         className="w-full sm:w-auto"
                     />
 
-                    <div className="flex justify-between ps-1 pe-3 w-full sm:hidden">
-                        <p className="text-sm">Disagree</p>
-                        <p className="text-sm">Agree</p>
+                    <div className="flex justify-between pe-2 w-full sm:hidden">
+                        <p className="text-xs sm:text-sm">Disagree</p>
+                        <p className="text-xs sm:text-sm">Agree</p>
                     </div>
 
                     <p className="hidden sm:block text-sm sm:text-base md:text-lg">Agree</p>
