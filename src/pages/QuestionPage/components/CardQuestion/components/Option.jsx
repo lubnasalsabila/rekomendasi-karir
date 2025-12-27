@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils"
 
 const options = [
-  { value: "sd", label: "1", text: "Strongly Disagree" },
-  { value: "d", label: "2", text: "Disagree" },
-  { value: "n", label: "3", text: "Neutral" },
-  { value: "a", label: "4", text: "Agree" },
-  { value: "sa", label: "5", text: "Strongly Agree" },
+  { value: 1, label: "1", text: "Strongly Disagree" },
+  { value: 2, label: "2", text: "Disagree" },
+  { value: 3, label: "3", text: "Neutral" },
+  { value: 4, label: "4", text: "Agree" },
+  { value: 5, label: "5", text: "Strongly Agree" },
 ]
 
 export function Option({

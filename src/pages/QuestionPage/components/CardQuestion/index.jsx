@@ -7,14 +7,14 @@ import {
 } from "@/components/ui/card"
 import { Option } from "./components/Option"
 
-const CardQuestion = ({ value, onSelect }) => {
+const CardQuestion = ({ index, question, value, onSelect }) => {
     return(
         <>
             <Card className="w-full max-w-sm sm:max-w-lg md:max-w-xl text-center sm:px-8 md:px-6 md:gap-4 gap-3 shadow-none border-none">
                 <CardHeader className="px-0">
-                    <CardTitle className="text-lg sm:text-xl text-[#206FB7]">Question </CardTitle>
+                    <CardTitle className="text-lg sm:text-xl text-[#206FB7]">Question {index}</CardTitle>
                     <CardDescription className="text-xs sm:text-base text-black px-4">
-                    Ut enim ad minima veniam, quis nostrum nisi ut aliquid ex ea commodi consequatur?
+                    {question}
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col items-center gap-2
