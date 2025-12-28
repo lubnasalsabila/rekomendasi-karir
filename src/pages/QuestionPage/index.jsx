@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Option } from "./components/CardQuestion/components/Option";
 import { useNavigate } from "react-router-dom";
+import back from "../../assets/back.png"
 
 import {
   Card,
@@ -65,7 +66,8 @@ const QuestionPage = () => {
 
   return (
     <div className="text-center flex flex-col items-center sm:py-8 bg-[#F9F9F9]">
-      <div className="w-full max-w-sm p-4 md:max-w-2xl sm:max-w-xl flex flex-col gap-3 md:gap-6">
+      <div className="w-full max-w-sm p-4 md:max-w-2xl sm:max-w-xl flex flex-col gap-3 md:gap-3">
+      <a href="/" className="text-sm text-blue-600 flex items-center gap-1 mr-auto"><img src={back} alt=""/> Home</a>
 
         {/* HEADER */}
         <div className="flex justify-between mb-1">
@@ -82,8 +84,10 @@ const QuestionPage = () => {
           className="[&>div]:bg-[#206FB7]"
         />
 
+        <div className="flex flex-col gap-3 md:gap-6">
+
         <h1 className="text-sm md:text-2xl sm:text-xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Silakan pilih jawaban yang paling menggambarkan diri Anda sesuai dengan pernyataan di bawah ini. Tidak ada jawaban benar atau salah.
         </h1>
 
         <Option
@@ -104,7 +108,7 @@ const QuestionPage = () => {
             }
 
             return (
-              <div key={q.questionId} className="">
+              <div key={q.questionId} className="w-full md:w-auto">
                 {showSection && (
                   <Card className="w-full max-w-xl bg-[#206FB7] p-4 mb-3">
                     <CardHeader className="items-center gap-0">
@@ -148,7 +152,7 @@ const QuestionPage = () => {
 
           <Button
             disabled={!allFilled}
-            className={ `w-full mt-6 text-white max-w-lg sm:max-w-xl ${allFilled ? "bg-[#206FB7] hover:bg-blue-500" : "bg-gray-400"}` }
+            className={ `w-full mt-6 text-white max-w-lg sm:max-w-xl ${allFilled ? "bg-[#206FB7] hover:bg-blue-600" : "bg-gray-400"}` }
             onClick={async () => {
               if (page < totalPages) {
                 setPage(page + 1);
@@ -172,6 +176,8 @@ const QuestionPage = () => {
           >
             {page === totalPages ? "Send" : "Next"}
           </Button>
+        </div>
+
         </div>
       </div>
     </div>

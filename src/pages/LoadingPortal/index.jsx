@@ -33,8 +33,11 @@ const LoadingPortal = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <Spinner className="size-8" />
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="p-4 rounded-lg bg-[#206FB7] mb-4">
+        <Spinner className="size-12 text-white" />
+      </div>
+      <h3 className="text-xl">Getting everything ready...</h3>
     </div>
   );
 };

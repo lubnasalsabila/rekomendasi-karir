@@ -17,6 +17,7 @@ import {
 import { useForm } from "react-hook-form";
 import { createUserInfo } from "@/lib/user";
 import { useNavigate } from "react-router-dom";
+import back from "../../assets/back.png"
 
 
 const STATUS_OPTIONS = [
@@ -65,113 +66,109 @@ const FormPage = () => {
 
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-xl font-bold mb-6">
-        User Information
-      </h1>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="max-w-xl w-full p-6 border border-gray-100 rounded-lg mx-4 sm:mx-0 shadow-md">
+        <h1 className="text-xl font-bold mb-6 text-center">
+          User Information
+        </h1>
 
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 
-          {/* STATUS */}
-          <FormField
-            control={form.control}
-            name="status"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Status saat ini</FormLabel>
-                <FormControl>
-                  <Select
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Pilih status" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {STATUS_OPTIONS.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            {/* STATUS */}
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status saat ini</FormLabel>
+                  <FormControl>
+                    <Select
+                      value={field.value}
+                      onValueChange={field.onChange}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Pilih status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {STATUS_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          {/* EXPERIENCE */}
-          <FormField
-            control={form.control}
-            name="foodIndustryExperience"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Pengalaman di industri pangan</FormLabel>
-                <FormControl>
-                  <Select
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Pilih pengalaman" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {EXPERIENCE_OPTIONS.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            {/* EXPERIENCE */}
+            <FormField
+              control={form.control}
+              name="foodIndustryExperience"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Pengalaman di industri pangan</FormLabel>
+                  <FormControl>
+                    <Select
+                      value={field.value}
+                      onValueChange={field.onChange}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Pilih pengalaman" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {EXPERIENCE_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          {/* FIELD */}
-          <FormField
-            control={form.control}
-            name="field"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Bidang yang diminati</FormLabel>
-                <FormControl>
-                  <Select
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Pilih bidang" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {FIELD_OPTIONS.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+            {/* FIELD */}
+            <FormField
+              control={form.control}
+              name="field"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Bidang yang diminati</FormLabel>
+                  <FormControl>
+                    <Select
+                      value={field.value}
+                      onValueChange={field.onChange}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Pilih bidang" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {FIELD_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <Button type="submit" className="w-full">
-            Submit
-          </Button>
-        </form>
-      </Form>
-
-      <button
-        onClick={() => navigate("/")}
-        className="w-full mt-6 bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
-        >
-        Kembali ke Home
-      </button>
+            <Button type="submit" className="w-full bg-[#206FB7] hover:bg-blue-600">
+              Submit
+            </Button>
+          </form>
+        </Form> 
+        <a href="/" className="text-sm text-blue-600 flex items-center mt-4 gap-1"><img src={back} alt=""/> Home</a>
+      </div>
     </div>
   );
 };

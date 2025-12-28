@@ -11,7 +11,7 @@ export const FrontButton = ({ token }) => {
   return (
     <Button
       onClick={handleClick}
-      className="w-full mt-6 text-white max-w-lg sm:max-w-xl bg-[#206FB7] hover:bg-blue-500"
+      className="w-full mt-6 text-white max-w-lg sm:max-w-xl bg-[#206FB7] hover:bg-blue-600"
     >
       Career Recommendation
     </Button>
