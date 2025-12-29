@@ -66,7 +66,7 @@ const ResultPage = () => {
 
           <div className="information">
             <div className="mb-2">
-              <p className="font-semibold">Interpretasi</p>
+              <p className="font-semibold">Interpretasi</p>    
               <p className="text-gray-600 leading-5 mt-1">
                 {result.interpretation}
               </p>
