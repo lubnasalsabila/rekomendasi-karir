@@ -17,7 +17,7 @@ import {
 import { useForm } from "react-hook-form";
 import { createUserInfo } from "@/lib/user";
 import { useNavigate } from "react-router-dom";
-import back from "../../assets/back.png"
+import back from "../../../assets/back.png"
 
 
 const STATUS_OPTIONS = [

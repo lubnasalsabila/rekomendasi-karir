@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   generateToken,
   portal,
-} from "../../lib/auth";
+} from "../../../lib/auth";
 
 const LoadingPortal = () => {
   const navigate = useNavigate();

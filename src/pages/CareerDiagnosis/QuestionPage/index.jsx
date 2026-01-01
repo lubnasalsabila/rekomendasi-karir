@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Option } from "./components/CardQuestion/components/Option";
 import { useNavigate } from "react-router-dom";
-import back from "../../assets/back.png"
+import back from "../../../assets/back.png"
 
 import {
   Card,
@@ -113,7 +113,7 @@ const QuestionPage = () => {
                   <Card className="w-full max-w-xl bg-[#206FB7] p-4 mb-3">
                     <CardHeader className="items-center gap-0">
                       <CardTitle className="text-sm sm:text-lg text-white font-bold">
-                        Section: {q.sectionTitle}
+                        {q.sectionTitle}
                       </CardTitle>
                     </CardHeader>
                   </Card>
