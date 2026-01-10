@@ -11,42 +11,17 @@ const options = [
 export function Option({
   value = null,
   onChange = () => {},
-  variant = "horizontal",
-  className = ""
+  className = "",
 }) {
   return (
     <div
       className={cn(
-        "flex w-full flex-wrap justify-between",
-        "sm:flex-nowrap sm:gap-3 sm:justify-center",
-        variant === "vertical" ? " flex-wrap" : "",
+        "flex w-full justify-between sm:justify-center sm:gap-3",
         className
       )}
     >
       {options.map((opt) => {
-        const selected = value === opt.value;
-
-        if (variant === "vertical") {
-          return (
-            <div
-              key={opt.value}
-              className="flex flex-col items-center gap-2 w-12 sm:w-20"
-            >
-              <button
-                type="button"
-                className={cn(
-                  "h-12 w-12 sm:w-15 sm:h-15 text-xs sm:text-lg rounded-full flex items-center justify-center font-semibold border transition-all bg-muted text-foreground/70 cursor-default"
-                )}
-              >
-                {opt.label}
-              </button>
-
-              <span className="text-[10px] sm:text-sm text-gray-600 text-center px-2 leading-tight">
-                {opt.text}
-              </span>
-            </div>
-          );
-        }
+        const selected = value === opt.value
 
         return (
           <button
@@ -54,16 +29,17 @@ export function Option({
             type="button"
             onClick={() => onChange(opt.value)}
             className={cn(
-              "h-12 w-12 sm:w-15 sm:h-15 text-xs sm:text-lg rounded-full flex items-center justify-center font-semibold border transition-all",
+              "h-12 w-12 sm:w-15 sm:h-15 text-xs sm:text-lg rounded-full flex items-center justify-center font-semibold border-2 transition-all",
+              "hover:border-primary hover:text-primary",
               selected
-                ? "bg-[#206FB7] text-white border-blue-700 scale-[1.03]"
-                : "bg-muted text-foreground/70 hover:bg-muted/80"
+                ? "bg-[#206FB7] text-white scale-[1.03] shadow-glow hover:text-white"
+                : "border-border"
             )}
           >
             {opt.label}
           </button>
-        );
+        )
       })}
     </div>
-  );
+  )
 }

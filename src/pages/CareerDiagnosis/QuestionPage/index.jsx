@@ -6,15 +6,10 @@ import { createResultAnswer } from "@/lib/result";
 import CardQuestion from "./components/CardQuestion";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Option } from "./components/CardQuestion/components/Option";
 import { useNavigate } from "react-router-dom";
-import back from "../../../assets/back.png"
+// import back from "../../../assets/back.png"
+import Layout from "../../../components/Layout"
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 const PER_PAGE = 5;
 
@@ -65,122 +60,176 @@ const QuestionPage = () => {
 
 
   return (
-    <div className="text-center flex flex-col items-center sm:py-8 bg-[#F9F9F9]">
-      <div className="w-full max-w-sm p-4 md:max-w-2xl sm:max-w-xl flex flex-col gap-3 md:gap-3">
-      <a href="/" className="text-sm text-blue-600 flex items-center gap-1 mr-auto"><img src={back} alt=""/> Home</a>
+    <Layout idPage="QuestionPage">
+      <div className="text-center flex flex-col items-center sm:py-8">
+        <div className="w-full max-w-sm md:max-w-2xl sm:max-w-xl flex flex-col gap-3 md:gap-6">
+          {/* <a href="/" className="text-sm text-blue-600 flex items-center gap-1 mr-auto"><img src={back} alt=""/> Home</a> */}
+          <div className="bg-card text-card-foreground rounded-2xl px-8 py-4 shadow-soft">
+            <h1 className="font-bold text-start text-foreground text-2xl">Career Diagnosis</h1>
+          </div>
 
-        {/* HEADER */}
-        <div className="flex justify-between mb-1">
-          <p className="text-gray-400 text-xs sm:text-sm">
-            {answeredCount}/{flatQuestions.length} Question
-          </p>
-          <p className="text-[#206FB7] font-semibold text-xs sm:text-sm">
-            Page {page} of {totalPages}
-          </p>
-        </div>
+          {/* HEADER */}
+          <div className="flex flex-col gap-1 md:gap-1">
+            <div className="flex justify-between mb-1 text-muted-foreground">
+              <p className="text-xs sm:text-sm font-medium">
+                {answeredCount}/{flatQuestions.length} Question
+              </p>
+              <p className="font-semibold text-xs sm:text-sm">
+                Page {page} of {totalPages}
+              </p>
+            </div>
+            
+            <Progress
+              value={(page / totalPages) * 100}
+              className="[&>div]:bg-[#206FB7]"
+            />
+          </div>
 
-        <Progress
-          value={(page / totalPages) * 100}
-          className="[&>div]:bg-[#206FB7]"
-        />
+          <div className="flex flex-col gap-3 md:gap-6">
 
-        <div className="flex flex-col gap-3 md:gap-6">
+            <div className="bg-card text-card-foreground rounded-2xl p-8 shadow-soft">
+              <div className="text-center max-w-2xl mx-auto">
+                <h1 className="text-xl md:text-2xl font-semibold mb-4 leading-relaxed text-foreground">
+                  Silakan pilih jawaban yang paling menggambarkan diri Anda sesuai dengan pernyataan di bawah ini. Tidak ada jawaban benar atau salah.
+                </h1>
 
-        <h1 className="text-sm md:text-2xl sm:text-xl">
-          Silakan pilih jawaban yang paling menggambarkan diri Anda sesuai dengan pernyataan di bawah ini. Tidak ada jawaban benar atau salah.
-        </h1>
+                <div className="flex justify-center items-center gap-2 md:gap-4 flex-wrap text-xs md:text-sm text-muted-foreground bg-muted/50 py-4 px-6 rounded-xl">
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center font-bold text-muted-foreground bg-card">
+                      1
+                    </span>
+                    <span className="text-[10px] uppercase tracking-wide font-medium">
+                      Strongly Disagree
+                    </span>
+                  </div>
 
-        <Option
-          variant="vertical"
-          className="max-w-[300px] mx-auto sm:max-w-full"
-        />
+                  <div className="h-px w-4 md:w-8 bg-border"></div>
 
-        {/* QUESTIONS */}
-        <div className="flex flex-col items-center gap-2">
-          {currentQuestions.map((q, i) => {
-            let showSection = false;
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="w-8 h-8 rounded-full border border-border flex items-center justify-center font-bold text-muted-foreground bg-card">
+                      5
+                    </span>
+                    <span className="text-[10px] uppercase tracking-wide font-medium">
+                      Strongly Agree
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            if (i === 0) {
-              const prevQuestion = flatQuestions[start - 1];
-              showSection = !prevQuestion || prevQuestion.sectionId !== q.sectionId;
-            } else {
-              showSection = q.sectionId !== currentQuestions[i - 1].sectionId;
-            }
+            {/* QUESTIONS */}
+            <div className="flex flex-col items-center gap-2 sm:gap-4">
+              {currentQuestions.map((q, i) => {
+                let showSection = false;
 
-            return (
-              <div key={q.questionId} className="w-full md:w-auto">
-                {showSection && (
-                  <Card className="w-full max-w-xl bg-[#206FB7] p-4 mb-3">
-                    <CardHeader className="items-center gap-0">
-                      <CardTitle className="text-sm sm:text-lg text-white font-bold">
-                        {q.sectionTitle}
-                      </CardTitle>
-                    </CardHeader>
-                  </Card>
-                )}
+                if (i === 0) {
+                  const prevQuestion = flatQuestions[start - 1];
+                  showSection = !prevQuestion || prevQuestion.sectionId !== q.sectionId;
+                } else {
+                  showSection = q.sectionId !== currentQuestions[i - 1].sectionId;
+                }
 
-                <CardQuestion
-                  index={start + i + 1}
-                  question={q.questionText}
-                  value={answers[q.questionId]}
-                  onSelect={async (value) => {
-                    setAnswers(prev => ({
-                      ...prev,
-                      [q.questionId]: value,
-                    }));
+                return (
+                  <div key={q.questionId} className="w-full">
+                    {showSection && (
+                      <div className="relative mb-8">
+                        <div aria-hidden="true" className="absolute inset-0 flex items-center">
+                          <div className="w-full border-t border-border"></div>
+                        </div>
+                        <div className="relative flex justify-center">
+                          <span className="px-6 bg-primary text-white text-sm font-bold tracking-wider uppercase rounded-full py-2 shadow-glow">
+                            {q.sectionTitle}
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
+                    <CardQuestion
+                      index={start + i + 1}
+                      question={q.questionText}
+                      value={answers[q.questionId]}
+                      onSelect={async (value) => {
+                        setAnswers(prev => ({
+                          ...prev,
+                          [q.questionId]: value,
+                        }));
+
+                        try {
+                          const res = await saveAnswer({
+                            questionId: q.questionId,
+                            pointScale: value,
+                            currentPage: page, 
+                          });
+
+                          console.log("SAVE ANSWER SUCCESS:", res);
+                        } catch (err) {
+                          console.error(
+                            "FAILED SAVE ANSWER:",
+                            err.response?.data || err
+                          );
+                        }
+                      }}
+                    />
+
+                  </div>
+                );
+              })}
+              
+              <div className="w-full flex justify-between items-center mt-8">
+                {/* PREVIOUS */}
+                <Button
+                  variant="outline"
+                  disabled={page === 1}
+                  onClick={() => setPage(page - 1)}
+                  className="
+                    px-6 py-5 rounded-xl
+                    border-border
+                    text-muted-foreground
+                    hover:bg-accent hover:text-foreground
+                    disabled:opacity-50 disabled:pointer-events-none
+                    transition-colors
+                  "
+                >
+                  Previous
+                </Button>
+
+                {/* NEXT / SEND */}
+                <Button
+                  disabled={!allFilled}
+                  onClick={async () => {
+                    if (page < totalPages) {
+                      setPage(page + 1);
+                      return;
+                    }
 
                     try {
-                      const res = await saveAnswer({
-                        questionId: q.questionId,
-                        pointScale: value,
-                        currentPage: page, 
-                      });
-
-                      console.log("SAVE ANSWER SUCCESS:", res);
+                      const res = await createResultAnswer();
+                      navigate(`/result/${res.data.id}`);
                     } catch (err) {
-                      console.error(
-                        "FAILED SAVE ANSWER:",
-                        err.response?.data || err
-                      );
+                      console.error("FAILED CREATE RESULT:", err);
                     }
                   }}
-                />
-
+                  className="
+                    px-8 py-5 rounded-xl
+                    bg-primary text-primary-foreground
+                    shadow-lg shadow-primary/30
+                    hover:bg-primary/90
+                    disabled:bg-muted disabled:text-muted-foreground
+                    disabled:shadow-none
+                    transform hover:-translate-y-0.5
+                    transition-all
+                  "
+                >
+                  {page === totalPages ? "Send" : "Next Page"}
+                </Button>
               </div>
-            );
-          })}
 
-          <Button
-            disabled={!allFilled}
-            className={ `w-full mt-6 text-white max-w-lg sm:max-w-xl ${allFilled ? "bg-[#206FB7] hover:bg-blue-600" : "bg-gray-400"}` }
-            onClick={async () => {
-              if (page < totalPages) {
-                setPage(page + 1);
-                return;
-              }
+            </div>
 
-              // FINAL SUBMIT
-              try {
-                const res = await createResultAnswer();
-
-                const resultId = res.data.id;
-
-                navigate(`/result/${resultId}`);
-              } catch (err) {
-                console.error(
-                  "FAILED CREATE RESULT:",
-                  err.response?.data || err
-                );
-              }
-            }}
-          >
-            {page === totalPages ? "Send" : "Next"}
-          </Button>
-        </div>
-
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

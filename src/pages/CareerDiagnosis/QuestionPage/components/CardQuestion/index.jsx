@@ -10,28 +10,43 @@ import { Option } from "./components/Option"
 const CardQuestion = ({ index, question, value, onSelect }) => {
     return(
         <>
-            <Card className="w-full max-w-sm sm:max-w-lg md:max-w-xl text-center sm:px-8 md:px-6 md:gap-4 gap-3 shadow-none border-none">
-                <CardHeader className="px-0">
-                    <CardTitle className="text-lg sm:text-xl text-[#206FB7]">Question {index}</CardTitle>
-                    <CardDescription className="text-xs sm:text-base text-black px-4">
-                    {question}
+            <Card
+                className="
+                    group relative w-full max-w-sm sm:max-w-xl md:max-w-2xl
+                    rounded-2xl
+                    bg-card text-card-foreground
+                    shadow-soft hover:shadow-lg
+                    transition-shadow duration-300
+                    overflow-hidden gap-4 border-none"
+                >
+                {/* Accent bar kiri */}
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-muted group-hover:bg-primary transition-colors duration-300"/>
+
+                <CardHeader className="px-6 flex items-center gap-3 mb-3 text-start">
+                    <CardTitle className="text-xs font-bold p-2.5 rounded-md bg-blue-100 dark:bg-blue-900/30 text-primary">
+                        Q{index}
+                    </CardTitle>
+
+                    <CardDescription className="text-lg md:text-xl text-foreground font-medium leading-snug">
+                        {question}
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center gap-2
-                    sm:flex-row sm:justify-center sm:items-center sm:gap-6">
-                    <p className="hidden sm:block text-sm sm:text-base md:text-lg">Disagree</p>
-                    <Option
-                        value={value}
-                        onChange={onSelect}
-                        className="w-full sm:w-auto"
-                    />
 
-                    <div className="flex justify-between pe-2 w-full sm:hidden">
-                        <p className="text-xs sm:text-sm">Disagree</p>
-                        <p className="text-xs sm:text-sm">Agree</p>
+                <CardContent className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:items-center sm:gap-6 px-6 pb-3">
+                    <p className="hidden sm:block text-sm sm:text-base text-muted-foreground">
+                        Disagree
+                    </p>
+
+                    <Option value={value} onChange={onSelect} className="w-full sm:w-auto"/>
+
+                    <div className="flex justify-between w-full sm:hidden text-xs text-muted-foreground">
+                        <p>Disagree</p>
+                        <p>Agree</p>
                     </div>
 
-                    <p className="hidden sm:block text-sm sm:text-base md:text-lg">Agree</p>
+                    <p className="hidden sm:block text-sm sm:text-base text-muted-foreground">
+                        Agree
+                    </p>
                 </CardContent>
             </Card>
         </>
